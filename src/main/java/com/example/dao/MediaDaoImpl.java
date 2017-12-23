@@ -9,6 +9,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
+import com.example.entity.Media;
 import com.example.entity.Person;
 
 /**
@@ -16,21 +17,21 @@ import com.example.entity.Person;
  *
  */
 @Repository
-public class PersonDaoImp implements PersonDao {
+public class MediaDaoImpl implements MediaDao {
 
    @PersistenceContext
    private EntityManager em;
 
    @Override
-   public void add(Person person) {
-      em.persist(person);
+   public void add(Media media) {
+      em.persist(media);
    }
 
    @Override
-   public List<Person> listPersons() {
-      CriteriaQuery<Person> criteriaQuery = em.getCriteriaBuilder().createQuery(Person.class);
+   public List<Media> listMedia() {
+      CriteriaQuery<Media> criteriaQuery = em.getCriteriaBuilder().createQuery(Media.class);
       @SuppressWarnings("unused")
-      Root<Person> root = criteriaQuery.from(Person.class);
+      Root<Media> root = criteriaQuery.from(Media.class);
       return em.createQuery(criteriaQuery).getResultList();
    }
 

@@ -6,29 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.dao.PersonDao;
-import com.example.entity.Person;
+import com.example.dao.MediaDao;
+import com.example.entity.Media;
 
 /**
  * @author ekansh
  *
  */
 @Service
-public class PersonServiceImp implements PersonService {
+public class MediaServiceImpl implements MediaService {
 
    @Autowired
-   private PersonDao userDao;
+   private MediaDao mediaDao;
 
    @Transactional
    @Override
-   public void add(Person person) {
-      userDao.add(person);
+   public void add(Media media) {
+      mediaDao.add(media);
    }
 
    @Transactional(readOnly = true)
    @Override
-   public List<Person> listPersons() {
-      return userDao.listPersons();
+   public List<Media> listMedia() {
+      return mediaDao.listMedia();
    }
 
 }

@@ -1,17 +1,46 @@
 package com.example.entity;
 
+import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Entity;
 
-//@Entity
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+
+
+@Entity
 public class Product {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long productid;
 	private String name;
 	private String searchableTags;
 	private String shortDescription;
 	private String longDescription;
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="product")
 	private List<Media> media;
 	private Float price;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="categoryid")
 	private Category category;
+	
+	
+	
+	public void addMedia(Media m){
+		if(media==null){
+			media= new ArrayList<>();
+		}
+		m.setProduct(this);
+		media.add(m);
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -48,10 +77,19 @@ public class Product {
 	public void setPrice(Float price) {
 		this.price = price;
 	}
+	public Long getProductid() {
+		return productid;
+	}
+	public void setProductid(Long productid) {
+		this.productid = productid;
+	}
+
 	public Category getCategory() {
 		return category;
 	}
+
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	
 }

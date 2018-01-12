@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.config.AppConfig;
+import com.example.entity.Image;
 import com.example.entity.Media;
 import com.example.entity.Video;
 
@@ -25,12 +26,12 @@ public class MediaServiceTest extends TestCase
 
    @Test
     public void testInsertMedia(){
-    	Media m = new Video();
-		m.setName("Sample WORLD");
-		mediaService.add(m);
-		List<Media> listMedia = mediaService.listMedia();
-		for (Media media : listMedia) {
-			System.out.println("Media Name "+ media.getName());
-		}
+//    	Media m =  new Image();
+//		m.setName("an image");
+//		mediaService.add(m);
+//		List<Media> listMedia = mediaService.listMedia();
+//		for (Media media : listMedia) {
+//			System.out.println("Media Name "+ media.getName());
+//		}
     }
 }

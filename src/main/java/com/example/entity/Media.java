@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public abstract class Media {
@@ -14,7 +16,10 @@ public abstract class Media {
 	private String description;
 	private String altText;
 	private String type;
-
+	@ManyToOne
+	@JoinColumn(name="productid")
+	private Product product;
+	
 	public Long getId() {
 		return id;
 	}
@@ -53,5 +58,13 @@ public abstract class Media {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 }

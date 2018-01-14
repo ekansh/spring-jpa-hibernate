@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
@@ -23,33 +24,38 @@ public class CategoryServiceImpl implements CategoryService {
 	private CategoryDao categoryDao;
 
 	@Override
-	 @Transactional
+	@Transactional
 	public void add(Category category) {
 		categoryDao.add(category);
 	}
-	 @Transactional(readOnly = true)
+
+	@Transactional(readOnly = true)
 	@Override
 	public Category find(Long categoryid) {
 		Category find = categoryDao.find(categoryid);
 		return find;
 	}
-	 @Transactional(readOnly = true)
+
+	@Transactional
 	@Override
 	public Category find(String name) {
 		Category find = categoryDao.find(name);
 		return find;
 	}
-	 @Transactional
+
+	@Transactional(propagation=Propagation.REQUIRED)
 	@Override
 	public void update(Category category) {
 		categoryDao.update(category);
 	}
-	 @Transactional
+
+	@Transactional
 	@Override
 	public void delete(Long categoryid) {
 		categoryDao.delete(categoryid);
 	}
-	 @Transactional
+
+	@Transactional
 	@Override
 	public List<Category> listCategory() {
 		return categoryDao.findAll();

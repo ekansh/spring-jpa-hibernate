@@ -59,7 +59,6 @@ public class CategoryDaoImpl implements CategoryDao {
 	@Override
 	public void update(Category category) {
 		em.merge(category);
-//		em.flush();
 	}
 
 	@Override

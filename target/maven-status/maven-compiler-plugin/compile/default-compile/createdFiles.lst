@@ -1,7 +1,7 @@
-com\example\entity\Person.class
-com\example\config\AppConfig.class
-com\example\MainApp.class
-com\example\service\PersonServiceImp.class
 com\example\dao\PersonDao.class
-com\example\service\PersonService.class
+com\example\entity\Person.class
+com\example\MainApp.class
 com\example\dao\PersonDaoImp.class
+com\example\config\AppConfig.class
+com\example\service\PersonServiceImp.class
+com\example\service\PersonService.class

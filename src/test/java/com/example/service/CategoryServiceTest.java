@@ -31,54 +31,56 @@ public class CategoryServiceTest extends TestCase {
 	public CategoryServiceTest() {
 	}
 
-//	@Before
-//	public void setUp() {
-//		System.out.println("Initializing the database");
-//		Category rootA = new Category();
-//		rootA.setName(TestCaseConstants.CategoryConstant.rootA);
-////		rootA.setCategoryid(TestCaseConstants.CategoryConstant.rootAPK);
-//
-//		Category rootAChild1 = new Category();
-//		rootAChild1.setName(TestCaseConstants.CategoryConstant.rootAChild1);
-////		rootAChild1.setCategoryid(TestCaseConstants.CategoryConstant.rootAChild1PK);
-//
-//		Category rootAChild2 = new Category();
-////		rootAChild2.setCategoryid(TestCaseConstants.CategoryConstant.rootAChild2PK);
-//		rootAChild2.setName(TestCaseConstants.CategoryConstant.rootAChild2);
-//
-//		Category rootAChild3 = new Category();
-////		rootAChild3.setCategoryid(TestCaseConstants.CategoryConstant.rootAChild3PK);
-//		rootAChild3.setName(TestCaseConstants.CategoryConstant.rootAChild3);
-//
-//		Category rootAChild1_Child1 = new Category();
-//		rootAChild1_Child1.setName(TestCaseConstants.CategoryConstant.rootAChild1_Child1);
-////		rootAChild1_Child1.setCategoryid(TestCaseConstants.CategoryConstant.rootAChild1_Child1PK);
-//
-//		Category rootAChild2_Child1 = new Category();
-//		rootAChild2_Child1.setName(TestCaseConstants.CategoryConstant.rootAChild2_Child1);
-////		rootAChild2_Child1.setCategoryid(TestCaseConstants.CategoryConstant.rootAChild2_Child1PK);
-//
-//		Category rootAChild3_Child1 = new Category();
-//		rootAChild3_Child1.setName(TestCaseConstants.CategoryConstant.rootAChild3_Child1);
-////		rootAChild3_Child1.setCategoryid(TestCaseConstants.CategoryConstant.rootAChild3_Child1PK);
-//
-//		rootA.addCategories(rootAChild1);
-//		rootA.addCategories(rootAChild2);
-//		rootA.addCategories(rootAChild3);
-//		rootAChild1.addCategories(rootAChild1_Child1);
-//		rootAChild2.addCategories(rootAChild2_Child1);
-//		rootAChild3.addCategories(rootAChild3_Child1);
-//		em.persist(rootA);
-//		System.out.println("Database ready for test");
-//	}
+	// @Before
+	// public void setUp() {
+	// System.out.println("Initializing the database");
+	// Category rootA = new Category();
+	// rootA.setName(TestCaseConstants.CategoryConstant.rootA);
+	//// rootA.setCategoryid(TestCaseConstants.CategoryConstant.rootAPK);
+	//
+	// Category rootAChild1 = new Category();
+	// rootAChild1.setName(TestCaseConstants.CategoryConstant.rootAChild1);
+	//// rootAChild1.setCategoryid(TestCaseConstants.CategoryConstant.rootAChild1PK);
+	//
+	// Category rootAChild2 = new Category();
+	//// rootAChild2.setCategoryid(TestCaseConstants.CategoryConstant.rootAChild2PK);
+	// rootAChild2.setName(TestCaseConstants.CategoryConstant.rootAChild2);
+	//
+	// Category rootAChild3 = new Category();
+	//// rootAChild3.setCategoryid(TestCaseConstants.CategoryConstant.rootAChild3PK);
+	// rootAChild3.setName(TestCaseConstants.CategoryConstant.rootAChild3);
+	//
+	// Category rootAChild1_Child1 = new Category();
+	// rootAChild1_Child1.setName(TestCaseConstants.CategoryConstant.rootAChild1_Child1);
+	//// rootAChild1_Child1.setCategoryid(TestCaseConstants.CategoryConstant.rootAChild1_Child1PK);
+	//
+	// Category rootAChild2_Child1 = new Category();
+	// rootAChild2_Child1.setName(TestCaseConstants.CategoryConstant.rootAChild2_Child1);
+	//// rootAChild2_Child1.setCategoryid(TestCaseConstants.CategoryConstant.rootAChild2_Child1PK);
+	//
+	// Category rootAChild3_Child1 = new Category();
+	// rootAChild3_Child1.setName(TestCaseConstants.CategoryConstant.rootAChild3_Child1);
+	//// rootAChild3_Child1.setCategoryid(TestCaseConstants.CategoryConstant.rootAChild3_Child1PK);
+	//
+	// rootA.addCategories(rootAChild1);
+	// rootA.addCategories(rootAChild2);
+	// rootA.addCategories(rootAChild3);
+	// rootAChild1.addCategories(rootAChild1_Child1);
+	// rootAChild2.addCategories(rootAChild2_Child1);
+	// rootAChild3.addCategories(rootAChild3_Child1);
+	// em.persist(rootA);
+	// System.out.println("Database ready for test");
+	// }
 
-//	@After
-//	public void tearDown() {
-//		System.out.println("Clearing DB of test data.. ");
-//		Category rootA = categoryService.find(TestCaseConstants.CategoryConstant.rootA);
-//		categoryService.delete(rootA.getCategoryid());
-//		System.out.println("database cleared of test data belonging to Category entity");
-//	}
+	// @After
+	// public void tearDown() {
+	// System.out.println("Clearing DB of test data.. ");
+	// Category rootA =
+	// categoryService.find(TestCaseConstants.CategoryConstant.rootA);
+	// categoryService.delete(rootA.getCategoryid());
+	// System.out.println("database cleared of test data belonging to Category
+	// entity");
+	// }
 
 	/**
 	 * CAT-1
@@ -180,6 +182,20 @@ public class CategoryServiceTest extends TestCase {
 		boolean anyMatch = categories.stream()
 				.anyMatch(e -> TestCaseConstants.CategoryConstant.rootAChild1_Child1.equals(e.getName()));
 		assertTrue(anyMatch);
+	}
+
+	@Test
+	public void testFindProductBelongingToACategory() {
+		Category samsung = categoryService.find(TestCaseConstants.CategoryConstantNew.SAMSUNG);
+		assertNotNull(samsung);
+		assertEquals(TestCaseConstants.CategoryConstantNew.SAMSUNG, samsung.getName());
+
+//		long count = samsung.getProducts().stream()
+//				.filter(e -> (TestCaseConstants.ProductConstant.S6.equals(e.getName())
+//						|| TestCaseConstants.ProductConstant.S9.equals(e.getName())
+//						|| TestCaseConstants.ProductConstant.S8.equals(e.getName())))
+//				.distinct().count();
+//		assertEquals(3, count);
 	}
 
 }

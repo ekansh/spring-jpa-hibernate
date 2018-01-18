@@ -50,6 +50,7 @@ public class Category {
 		return name;
 	}
 	public void setName(String name) {
+		System.out.println("EKANSH");
 		this.name = name;
 	}
 	public Long getCategoryid() {
